@@ -1,0 +1,66 @@
+<!-- Sidenav -->
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <!-- Top navbar -->
+  <app-navbar></app-navbar>
+  <!-- Page content -->
+  <div class="container-fluid root">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">{{tittle}}</h3>
+            <div class="float-right">
+              <label class="text-black" for="search">Busacador</label>
+              <input class="ml-3" type="text" [(ngModel)]="searchName" name="search">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th *ngFor="let columName of columNames" scope="col">{{columName}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Users -->
+                <tr *ngFor="let user of users | myfilter:searchName">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{user.id}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    {{user.firstName}}
+                  </td>
+                  <td>
+                    {{user.lastName}}
+                  </td>
+                  <td>
+                    {{user.email}}
+                  </td>
+                  <td>
+                    {{user.phone}}
+                  </td>
+                  <td class="text-right">
+                    <div ngbDropdown placement="bottom-right">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item">Detalle</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

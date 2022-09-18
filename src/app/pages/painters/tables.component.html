@@ -1,0 +1,69 @@
+<!-- Sidenav -->
+<app-sidebar></app-sidebar>
+<div class="main-content">
+  <app-navbar></app-navbar>
+  <!-- Page content -->
+  <div class="container-fluid root">
+    <!-- Dark table -->
+    <div class="row">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0">{{tittle}}</h3>
+            <div class="float-right">
+              <label class="text-white" for="search">Busacador</label>
+              <input class="ml-3" type="text" [(ngModel)]="searchName" name="search">
+            </div>
+            
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-dark table-flush">
+              <thead class="thead-dark">
+                <!-- Tittles -->
+                <tr>
+                  <th *ngFor="let columName of columNames" scope="col">{{columName}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Paiters -->
+                <tr *ngFor="let painter of painters | myfilter:searchName">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{painter.id}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td>
+                    {{painter.firstName}}
+                  </td>
+                  <td>
+                    {{painter.lastName}}
+                  </td>
+                  <td>
+                    {{painter.email}}
+                  </td>
+                  <td>
+                    {{painter.phone}}
+                  </td>
+                  <td class="text-right">
+                    <div ngbDropdown placement="bottom-right">
+                      <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                        <i class="fas fa-ellipsis-v"></i>
+                      </a>
+                      <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" (click)="painterDetail(painter.id)">Detalle</a>
+                        <a class="dropdown-item" (click)="modifyPainter(painter.id)">Modificar</a>
+                        <a class="dropdown-item" (click)="deletePainter(painter.id)">Eliminar</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
