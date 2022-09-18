@@ -20,13 +20,20 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string){
-        return this.http.post<any>(`https://h412lkjah1.execute-api.us-east-1.amazonaws.com/user/login`, { email: username, password })
+        const user: any = {
+            username,
+            password,
+            token: "token123456789"
+        }
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        // ESTO VA CUANDO LE PEGUEMOS A UN SERVICIO HTTP
+        /* return this.http.post<any>(`url Auth0 del Back`, { email: username, password })
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
             return user;
-        }));
+        })); */
     }
 
     logout() {

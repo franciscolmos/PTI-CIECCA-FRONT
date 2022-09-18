@@ -46,7 +46,9 @@ export class LoginComponent implements OnInit {
 
     async onSubmit() {
         this.authenticationService.login(this.f.username.value, this.f.password.value)
-        .subscribe(
+        this.router.navigate(['/painters']);
+        // ESTO VA CUANDO LE PEGUEMOS A UN SERVICIO HTTP
+        /* .subscribe(
             data => {
                 console.log('data', data)
                 this.router.navigate(['/dashboard']);
@@ -55,6 +57,6 @@ export class LoginComponent implements OnInit {
                 alert('Se rrompió')
                 this.alertService.error(error);
                 this.loading = false;
-            });
+            }); */
     }
 }
