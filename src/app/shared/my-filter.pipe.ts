@@ -17,7 +17,6 @@ export class MyFilterPipe implements PipeTransform {
                val.phone.toLowerCase().startsWith(filter.toLowerCase())){
                result.push(val)
             }
-        
         }
         return result;
     }

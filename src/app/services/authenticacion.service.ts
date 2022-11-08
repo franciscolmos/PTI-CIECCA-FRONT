@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { User } from '../model/user';
 
 @Injectable({ providedIn: 'root' })
@@ -27,13 +26,13 @@ export class AuthenticationService {
         }
         localStorage.setItem('currentUser', JSON.stringify(user));
         // ESTO VA CUANDO LE PEGUEMOS A UN SERVICIO HTTP
-        /* return this.http.post<any>(`url Auth0 del Back`, { email: username, password })
+        return this.http.post<any>(`url Auth0 del Back`, { email: username, password })
         .pipe(map(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(user));
             this.currentUserSubject.next(user);
             return user;
-        })); */
+        }));
     }
 
     logout() {

@@ -3,20 +3,17 @@ import { User } from "src/app/model/user";
 import { OPStatisticService } from "src/app/services/op-statistic.service";
 
 @Component({
-  selector: "app-user-profile",
-  templateUrl: "./users.component.html",
-  styleUrls: ["./users.component.scss"],
+  selector: "app-order-production",
+  templateUrl: "./order-production.component.html",
+  styleUrls: ["./order-production.component.scss"],
 })
-export class UsersComponent implements OnInit {
+export class OPComponent implements OnInit {
   public searchName: string = "";
-  public tittle: String = "Usuarios";
+  public tittle: String = "";
   public columNames: String[] = [
-    "Id",
-    "Nombre",
-    "Apellido",
-    "Email",
-    "Teléfono",
-    "Acción",
+    "Proceso",
+    "Completado",
+    "Cantidad Placas",
   ];
   public users: User[] = [
     {
@@ -37,6 +34,14 @@ export class UsersComponent implements OnInit {
 
   constructor(private OPService: OPStatisticService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.OPService.getOPStatisticDataByOPId("1300")
+    .subscribe(
+      data => {
+          console.log('data', data);
+      },
+      error => {
+          alert(error.error)
+      })
   }
 }
