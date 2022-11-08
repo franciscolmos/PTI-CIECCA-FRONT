@@ -1,1 +1,40 @@
 <h1>ORDER PRODUCTION</h1>
+<div class="container-fluid root">
+    <!-- Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">{{tittle}}</h3>
+            <div class="float-right">
+              <label class="text-black" for="search">Busacador</label>
+              <input class="ml-3" type="text" [(ngModel)]="searchName" name="search">
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th *ngFor="let columName of columNames" scope="col">{{columName}}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Users -->
+                <tr *ngFor="let op of opStatistics | myfilter:searchName">
+                  <td>
+                    {{op.proceso}}
+                  </td>
+                  <td>
+                    {{op.completado}}
+                  </td>
+                  <td>
+                    {{op.cantidadplacas || 0}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

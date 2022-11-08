@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/model/user";
+import { OPStatistic } from "src/app/model/OPStatistic";
 import { OPStatisticService } from "src/app/services/op-statistic.service";
 
 @Component({
@@ -8,40 +8,21 @@ import { OPStatisticService } from "src/app/services/op-statistic.service";
   styleUrls: ["./order-production.component.scss"],
 })
 export class OPComponent implements OnInit {
+  public opStatistics: OPStatistic;
   public searchName: string = "";
   public tittle: String = "";
-  public columNames: String[] = [
-    "Proceso",
-    "Completado",
-    "Cantidad Placas",
-  ];
-  public users: User[] = [
-    {
-      id: 1,
-      firstName: "Usuario 1",
-      lastName: "Usuario 1",
-      email: "usuario1@gmail.com",
-      phone: "3516196398",
-    },
-    {
-      id: 2,
-      firstName: "Usuario 2",
-      lastName: "Usuario 2",
-      email: "usuario2@gmail.com",
-      phone: "3516196399",
-    },
-  ];
+  public columNames: String[] = ["Proceso", "Completado", "Cantidad Placas"];
 
   constructor(private OPService: OPStatisticService) {}
 
   ngOnInit() {
-    this.OPService.getOPStatisticDataByOPId("1300")
-    .subscribe(
-      data => {
-          console.log('data', data);
+    this.OPService.getOPStatisticDataByOPId("1300").subscribe(
+      (data) => {
+        this.opStatistics = data;
       },
-      error => {
-          alert(error.error)
-      })
+      (error) => {
+        alert(error.error);
+      }
+    );
   }
 }
