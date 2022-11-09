@@ -4,33 +4,17 @@ import { AuthGuard } from "./helpers/auth.guard";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { TablesComponent } from "./pages/painters/tables.component";
-import { PainterDetailComponent } from "./pages/painter-detail/painter-detail.component";
-import { UsersComponent } from "./pages/users/users.component";
-import { ModifyPainterComponent } from "./pages/modify-painter/modify-painter.component";
 import { OPComponent } from "./pages/order-production/order-production.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
-  {
-    path: "modify-painter",
-    component: ModifyPainterComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: "painters", component: TablesComponent, canActivate: [AuthGuard] },
-  {
-    path: "painter-detail",
-    component: PainterDetailComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: "users", component: UsersComponent, canActivate: [AuthGuard] },
   {
     path: "order-production",
     component: OPComponent,
     canActivate: [AuthGuard],
   },
   // otherwise redirect to dashboard
-  { path: "**", redirectTo: "painters" },
+  { path: "**", redirectTo: "order-production" },
 ];
 
 @NgModule({

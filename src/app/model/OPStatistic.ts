@@ -1,5 +1,24 @@
-export class OPStatistic {
-    proceso: string;
-    completado: number;
-    catidadPlacas: string;
+
+export interface IProductionModule {
+    production: IOProduction,
+    control: IOPControl,
+    rework: IOPRework,
+}
+
+export interface IOProduction {
+    proceso: string,
+    cantidadPlacas: number,
+    completado: number,
+}
+
+export interface IOPControl {
+    proceso: string,
+    placasOK: number,
+    placasNC: number,
+    placasPNC: number,
+}
+
+export interface IOPRework {
+    proceso: string,
+    cantidadPlacas: number,
 }

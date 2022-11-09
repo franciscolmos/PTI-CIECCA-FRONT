@@ -10,7 +10,7 @@ export class MyFilterPipe implements PipeTransform {
         }
         let result: any[]=[]
         for (const val of value) {
-            if(val.firstName.toLowerCase().startsWith(filter.toLowerCase()) ||
+            if(val.firstName && val.firstName.toLowerCase().startsWith(filter.toLowerCase()) ||
                val.id == (filter.toLowerCase())                             ||
                val.lastName.toLowerCase().startsWith(filter.toLowerCase())  ||
                val.email.toLowerCase().startsWith(filter.toLowerCase())     ||
